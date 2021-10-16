@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mprisv"
+version = "0.1.0"
+description = ""
+authors = ["rembo10 <rembo10@users.noreply.github.com>"]
+license = "WTFPL"
+
+[tool.poetry.scripts]
+mprisv = "mprisv.main:start"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+dbus-next = "^0.2.3"
+asyncio = "^3.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

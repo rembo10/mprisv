@@ -1,0 +1,139 @@
+<node>
+	<interface name="org.freedesktop.DBus">
+		<method name="Hello">
+			<arg direction="out" type="s"></arg>
+		</method>
+		<method name="RequestName">
+			<arg direction="in" type="s"></arg>
+			<arg direction="in" type="u"></arg>
+			<arg direction="out" type="u"></arg>
+		</method>
+		<method name="ReleaseName">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="u"></arg>
+		</method>
+		<method name="StartServiceByName">
+			<arg direction="in" type="s"></arg>
+			<arg direction="in" type="u"></arg>
+			<arg direction="out" type="u"></arg>
+		</method>
+		<method name="UpdateActivationEnvironment">
+			<arg direction="in" type="a{ss}"></arg>
+		</method>
+		<method name="NameHasOwner">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="b"></arg>
+		</method>
+		<method name="ListNames">
+			<arg direction="out" type="as"></arg>
+		</method>
+		<method name="ListActivatableNames">
+			<arg direction="out" type="as"></arg>
+		</method>
+		<method name="AddMatch">
+			<arg direction="in" type="s"></arg>
+		</method>
+		<method name="RemoveMatch">
+			<arg direction="in" type="s"></arg>
+		</method>
+		<method name="GetNameOwner">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="s"></arg>
+		</method>
+		<method name="ListQueuedOwners">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="as"></arg>
+		</method>
+		<method name="GetConnectionUnixUser">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="u"></arg>
+		</method>
+		<method name="GetConnectionUnixProcessID">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="u"></arg>
+		</method>
+		<method name="GetAdtAuditSessionData">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="ay"></arg>
+		</method>
+		<method name="GetConnectionSELinuxSecurityContext">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="ay"></arg>
+		</method>
+		<method name="ReloadConfig"></method>
+		<method name="GetId">
+			<arg direction="out" type="s"></arg>
+		</method>
+		<method name="GetConnectionCredentials">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="a{sv}"></arg>
+		</method>
+		<property name="Features" type="as" access="read">
+			<annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"></annotation>
+		</property>
+		<property name="Interfaces" type="as" access="read">
+			<annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="const"></annotation>
+		</property>
+		<signal name="NameOwnerChanged">
+			<arg type="s"></arg>
+			<arg type="s"></arg>
+			<arg type="s"></arg>
+		</signal>
+		<signal name="NameLost">
+			<arg type="s"></arg>
+		</signal>
+		<signal name="NameAcquired">
+			<arg type="s"></arg>
+		</signal>
+	</interface>
+	<interface name="org.freedesktop.DBus.Properties">
+		<method name="Get">
+			<arg direction="in" type="s"></arg>
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="v"></arg>
+		</method>
+		<method name="GetAll">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="a{sv}"></arg>
+		</method>
+		<method name="Set">
+			<arg direction="in" type="s"></arg>
+			<arg direction="in" type="s"></arg>
+			<arg direction="in" type="v"></arg>
+		</method>
+		<signal name="PropertiesChanged">
+			<arg type="s" name="interface_name"></arg>
+			<arg type="a{sv}" name="changed_properties"></arg>
+			<arg type="as" name="invalidated_properties"></arg>
+		</signal>
+	</interface>
+	<interface name="org.freedesktop.DBus.Introspectable">
+		<method name="Introspect">
+			<arg direction="out" type="s"></arg>
+		</method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Monitoring">
+		<method name="BecomeMonitor">
+			<arg direction="in" type="as"></arg>
+			<arg direction="in" type="u"></arg>
+		</method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Debug.Stats">
+		<method name="GetStats">
+			<arg direction="out" type="a{sv}"></arg>
+		</method>
+		<method name="GetConnectionStats">
+			<arg direction="in" type="s"></arg>
+			<arg direction="out" type="a{sv}"></arg>
+		</method>
+		<method name="GetAllMatchRules">
+			<arg direction="out" type="a{sas}"></arg>
+		</method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Peer">
+		<method name="GetMachineId">
+			<arg direction="out" type="s"></arg>
+		</method>
+		<method name="Ping"></method>
+	</interface>
+</node>

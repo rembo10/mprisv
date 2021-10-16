@@ -1,0 +1,55 @@
+<node name="/com/mprisv">
+	<interface name="org.freedesktop.DBus.Introspectable">
+		<method name="Introspect">
+			<arg name="data" direction="out" type="s"></arg>
+		</method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Peer">
+		<method name="GetMachineId">
+			<arg name="machine_uuid" direction="out" type="s"></arg>
+		</method>
+		<method name="Ping"></method>
+	</interface>
+	<interface name="org.freedesktop.DBus.Properties">
+		<method name="Get">
+			<arg name="interface_name" direction="in" type="s"></arg>
+			<arg name="property_name" direction="in" type="s"></arg>
+			<arg name="value" direction="out" type="v"></arg>
+		</method>
+		<method name="Set">
+			<arg name="interface_name" direction="in" type="s"></arg>
+			<arg name="property_name" direction="in" type="s"></arg>
+			<arg name="value" direction="in" type="v"></arg>
+		</method>
+		<method name="GetAll">
+			<arg name="interface_name" direction="in" type="s"></arg>
+			<arg name="props" direction="out" type="a{sv}"></arg>
+		</method>
+		<signal name="PropertiesChanged">
+			<arg name="interface_name" direction="out" type="s"></arg>
+			<arg name="changed_properties" direction="out" type="a{sv}"></arg>
+			<arg name="invalidated_properties" direction="out" type="as"></arg>
+		</signal>
+	</interface>
+	<interface name="org.freedesktop.DBus.ObjectManager">
+		<method name="GetManagedObjects">
+			<arg name="objpath_interfaces_and_properties" direction="out" type="a{oa{sa{sv}}}"></arg>
+		</method>
+		<signal name="InterfacesAdded">
+			<arg name="object_path" direction="out" type="o"></arg>
+			<arg name="interfaces_and_properties" direction="out" type="a{sa{sv}}"></arg>
+		</signal>
+		<signal name="InterfacesRemoved">
+			<arg name="object_path" direction="out" type="o"></arg>
+			<arg name="interfaces" direction="out" type="as"></arg>
+		</signal>
+	</interface>
+	<interface name="com.mprisv.Remote">
+		<method name="Next"></method>
+		<method name="Pause"></method>
+		<method name="Play"></method>
+		<method name="PlayPause"></method>
+		<method name="Prev"></method>
+		<method name="Stop"></method>
+	</interface>
+</node>
