@@ -68,6 +68,7 @@ class PlayerManager:
             self.play_on_reconnect = True
         elif signal == Reconnect and self.play_on_reconnect and self.status == Status.PAUSED:
             await self.run(Command.PLAY)
+            self.play_on_reconnect = False
         elif isinstance(signal, PlaybackStatusChanged):
             if signal.name == self.player:
                 if signal.status == Status.STOPPED and self.last_player:
