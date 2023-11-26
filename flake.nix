@@ -10,15 +10,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
         };
+        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication;
       in
         {
-          defaultPackage = pkgs.poetry2nix.mkPoetryApplication {
+          defaultPackage = mkPoetryApplication {
             projectDir = ./.;
           };
         });
